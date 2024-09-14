@@ -1,0 +1,12 @@
+2019
+Question No.1 (20-25 min)
+Question No.2(5 min)
+Question No.3(35 min)
+
+2023
+Question No.1
+DfS - 6-7 min
+BFS - 10 min
+IDS - 20-22 min
+A* - 25 min
+MCQ's - 5-6 min
