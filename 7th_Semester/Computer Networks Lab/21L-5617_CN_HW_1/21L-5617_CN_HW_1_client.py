@@ -15,8 +15,9 @@ while True:
     try:
         response = client_socket.recv(1024).decode('utf-8')
         print(f"Server response: {response}")
-    except ConnectionResetError:
-        print("Connection was reset by the server.")
+    except (ConnectionResetError, ConnectionAbortedError):
+        print("Connection was aborted by the host or reset by the server.")
+        client_socket.close()
         break
 
 client_socket.close()
