@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube</title>
+    <link rel="icon" href="https://png.pngtree.com/png-vector/20221018/ourmid/pngtree-youtube-social-media-icon-png-image_6315995.png" type="image/png">
+
+    <!-- Link to connect bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- --------------------------------------------------------------------NAvigation BAR----------------------------------- -->
+    <div class="nav">
+        <div class="row nav">
+            <div class="col-md-2">
+                <img src="21L-5617_Q2images/you.png" alt="Logo" class="nav-logo">
+            </div>
+            <div class="col-md-5">
+                <input class="search" placeholder="Search">
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-primary" type="button">+ Create</button>
+            </div>
+            <div class="col-md-1">
+                <img src="21L-5617_Q2images/bell.png" alt="bell" class="bell">
+            </div>
+            <div class="col-md-1">
+                <img src="21L-5617_Q2images/me.jpg" alt="me" class="me">
+            </div>
+        </div>
+    </div>
+    <!-- --------------------------------------------------------------------Categories----------------------------------- -->
+    <div class="button-container">
+        <button class="btn btn-primary category-btn select_" type="button">All</button>
+        <button class="btn btn-primary category-btn" type="button">Thriller</button>
+        <button class="btn btn-primary category-btn" type="button">Comedy</button>
+        <button class="btn btn-primary category-btn" type="button">Drama</button>
+        <button class="btn btn-primary category-btn" type="button">Horror</button>
+        <button class="btn btn-primary category-btn" type="button">Sci-Fi</button>
+        <button class="btn btn-primary category-btn" type="button">Adventure</button>
+        <button class="btn btn-primary category-btn" type="button">Romance</button>
+        <button class="btn btn-primary category-btn" type="button">Action</button>
+        <button class="btn btn-primary category-btn" type="button">Fantasy</button>
+        <button class="btn btn-primary category-btn" type="button">Mystery</button>
+        <button class="btn btn-primary category-btn" type="button">Documentary</button>
+        <button class="btn btn-primary category-btn" type="button">Animation</button>
+        <button class="btn btn-primary category-btn" type="button">Crime</button>
+        <button class="btn btn-primary category-btn" type="button">Musical</button>
+        <button class="btn btn-primary category-btn" type="button">War</button>
+        <button class="btn btn-primary category-btn" type="button">Western</button>
+    </div>
+    
+    <!-- --------------------------------------------------------------------Dinamically add movies through API----------------------------------- -->
+    <div id="main" class="container">
+        <div class="movies" id="trending">
+            <div class="row" id="movies">
+            </div>
+        </div>
+    </div>
+    
+
+
+
+
+<div id="moviePOP" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeMoviePOP()">&times;</span>
+      <img id="modal-image" alt="Movie Image" />
+      <div id="modal-details">
+        <h2 id="modal-title"></h2>
+        <p id="modal-overview"></p>
+        <p id="modal-release"></p>
+        <p id="modal-rating"></p>
+        <p id="modal-vote"></p>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+
+    <style>
+        body {
+            background-color: black;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .nav {
+            background-color: black;
+            height: 15%;
+            width: 100%;
+            justify-content: center;
+            position: fixed;
+            left: 0;
+            z-index: 1000;
+            padding: 10px 0;
+        }
+        .button-container{
+            background-color:black;
+            height: 1%;
+            width: 100%;
+            margin-top: 5%;
+            box-sizing: border-box;
+            justify-content: center;
+            position: fixed;
+            left: 2%;
+            z-index: 1000;
+            padding: 10px 0;
+        }
+
+        .nav-logo {
+            height: 30px;
+            width: auto;
+            margin-left: 0;
+            margin-top: 5px;
+        }
+
+        .bell {
+            height: 30px;
+            width: auto;
+            margin-left: 20px;
+        }
+
+        .me {
+            height: 40px;
+            width: 40px;
+            margin-left: 10px;
+            margin-right: 5px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .search {
+            width: 90%;
+            margin-left: 10%;
+            background-color: black;
+            padding: 10px;
+            border: 1px solid white;
+            border-radius: 50px;
+            color: white;
+        }
+        .select_{
+            background-color: white !important;
+            color: #111!important;
+        }
+
+        input:focus {
+            border-color: #aaa;
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary {
+            background-color: #333;
+            color: white;
+            border-color: #111;
+            align-items: left;
+            border-radius: 50px;
+        }
+        .btn-primary:hover {
+            background-color: #333;
+            border: 1px solid #111;
+            color: white;
+        }
+
+        /* --------------------------------------------------------------------For smaler screens like mobile----------------------------------- */
+        @media (max-width: 1024px) {
+            input,
+            button {
+                display: none!important;
+            }
+            .col-md-3 button {
+                display: none;
+            }
+             .me {
+                position: absolute;
+                top: 10px;
+               margin-left: 150px;
+            }
+            .bell{
+                position: absolute;
+                top: 10px;
+               margin-left: 120px;
+            }
+            .button-container{
+                display: none;
+            }
+            .movie-inner-container{
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            margin-right: 190px ;
+}
+.container{
+    margin: 0;
+}
+        }
+        .container {
+    position: relative;
+    justify-content: center;
+    top: 180px;
+    margin: 2%;
+    padding: 1%;
+    overflow: hidden;
+    color: white;
+    margin-left: 90px;
+}
+.main_image {
+    width: 100%;
+    object-fit: contain;
+    margin: 0; 
+}
+.movie-content {
+    width: 100%;
+    overflow: hidden;
+}
+
+.col-md-1 {
+    padding: 2px !important; 
+    flex: 0 0 auto; 
+    width: auto !important; 
+}
+.category-btn {
+    height: 40px;
+    border-radius: 10px !important;
+    padding: 5px 10px !important;
+    
+}
+.category-btn:hover{
+    background-color: white;
+    color: #111;
+}
+.category-btn:focus{
+    background-color: white;
+    color: #111;
+}
+.button-container{
+    height: auto;
+    margin-top: 90px;
+}
+.movie-inner-container{
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+   
+}
+.movie-inner-container:hover{
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+
+.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 90px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding-top: 60px;
+}
+
+.modal-content {
+  background-color: #333;
+  margin: 5% auto;
+  padding: 20px;
+  color: white;
+  width: 80%;
+  max-width: 700px;
+}
+.close-btn {
+  color:white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.close-btn:hover,
+.close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+#modal-image {
+  width: 100%;
+  border-radius: 10px;
+}
+#modal-details {
+  margin-top: 15px;
+}
+#modal-details p {
+  margin: 10px 0;
+}
+.movie-inner-container p {
+    margin: 5px 0;
+}
+.rating {
+    font-size: 20px;
+    color: gold;
+}
+.overview {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.image-container:hover .overview {
+    opacity: 1;
+}
+
+    </style>
+<script>
+
+// --------------------------------------------------------------------Fetch and display on page dinamically-----------------------------------
+async function fetchMovies() {
+  try {
+    const response = await fetch('https://jsonfakery.com/movies/paginated');
+    const data = await response.json();
+    const moviesContainer = document.getElementById('movies');
+    
+    data.data.forEach(movie => {
+        console.log(data.data)
+      const { original_title, vote_average, poster_path, overview, vote_count, release_date,original_language
+      } = movie;
+      const image = poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : 'Nil';
+      
+      const movieDiv = document.createElement('div');
+      movieDiv.classList.add('col-md-4', 'movie-container');
+      
+      movieDiv.innerHTML = `
+        <div class="movie-inner-container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="image-container">
+                <img src="${image}" alt="${original_title}" class="main_image">
+                <div class="overview">${overview}</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <h2>${original_title}</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <p>Release on : ${release_date}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <p class="rating">${getStars(vote_average)}</p>
+            </div>
+            <div class="col-md-6">
+              <p class="vote">${vote_count} voters</p>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      moviesContainer.appendChild(movieDiv);
+
+// ----------------------------------------------thi only triger on click any move 
+      movieDiv.querySelector('.image-container').addEventListener('click', function() {
+        const image = movieDiv.querySelector('img').src;
+        const title = movieDiv.querySelector('h2').textContent;
+        const overview = movieDiv.querySelector('.overview').textContent;
+        const releaseDate = movieDiv.querySelector('.row p').textContent.replace('Release on : ', '');
+        const voteAverage = parseFloat(movieDiv.querySelector('.rating').textContent.replace('★', '').length * 2);
+        const voteCount = movieDiv.querySelector('.vote').textContent.split(' ')[0];
+
+        MoviePOPUP(image, title, overview, releaseDate, voteAverage, voteCount);
+      });
+    });
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+// ------------------COnvert rating to start---------------
+
+function getStars(rating) {
+  const starCount = Math.round(rating / 2);
+  return '★'.repeat(starCount) + '☆'.repeat(5 - starCount);
+}
+
+
+
+function MoviePOPUP(image, title, overview, releaseDate, voteAverage, voteCount) {
+  document.getElementById("modal-image").src = image;
+  document.getElementById("modal-title").textContent = title;
+  document.getElementById("modal-overview").textContent = overview;
+  document.getElementById("modal-release").textContent = "Release on: " + releaseDate;
+  document.getElementById("modal-rating").textContent = "Rating: " + voteAverage + "/10";
+  document.getElementById("modal-vote").textContent = voteCount + " voters";
+  document.getElementById("moviePOP").style.display = "block";
+}
+
+function closeMoviePOP() {
+  document.getElementById("moviePOP").style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target === document.getElementById("moviePOP")) {
+    closeMoviePOP();
+  }
+}
+
+fetchMovies();
+
+
+
+    </script>
+</body>
+</html>

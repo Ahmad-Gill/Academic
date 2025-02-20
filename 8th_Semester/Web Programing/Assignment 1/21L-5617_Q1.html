@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>CV Made By 21L-5617
+</title>
+
+<!-- Link to conect bootstrap css -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="icon" href="21L-5617_Q2images/me.png" type="image/png">
+<!-- bootstrap java  -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+
+
+
+<style>
+.container{
+    background: #fff;
+    margin-top: 5%;
+    padding-bottom: 2%;
+    width: 50%;
+    border-color: black;
+    border:2px solid;
+}
+h1, h2 {
+    font-weight: bold;
+    text-align: center;
+}
+#h2_{
+    text-align: left;
+}
+#main{
+    border-style: inset;
+}
+label {
+    font-weight: bold;
+}
+.small-heading {
+color: red;
+text-align: left;
+}
+.text-center{
+font-size: 70pt;
+font-weight: bold;
+}
+label{
+    font-weight: bold;
+}
+#main_CV{
+    margin-bottom: 20px;
+}
+.center_{
+    background-color:#000080 ;
+    color: white;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    font-size: 50px;
+    border-style: inset;
+}
+#address_out,#contact_out{
+    font-size: 15px;
+}
+
+.summary{
+text-align: left;
+    background-color: black;
+    width: 51%;
+    color: white;
+    clip-path: polygon(0 0, 80% 0, 100% 85%, 100% 100%, 0 100%)
+}
+#Experience_out {
+    font-weight: bold;
+    align-items: left;
+    align-content: left;
+}
+.btn{
+    background-color:#000080 ;
+    color: white;
+    font-weight: bold;
+}
+.btn:hover{
+    background-color:#000034 ;
+    transition: background-color 0.5s;
+    color:white;
+}
+textarea {
+    resize: none;
+}
+.form-control {
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+    transition: all 0.3s ease-in-out;
+}
+input.form-control:focus, textarea.form-control:focus {
+    border-color: #000034 !important;
+    box-shadow: 0 0 5px rgba(0, 0, 52, 0.5) !important;
+}
+.row {
+    align-items: center;
+    margin-bottom: 10px;
+}
+.Educational{
+    background-color: black;
+    text-align: left;
+    width: 51%;
+    color: white;
+    clip-path: polygon(0 0, 80% 0, 100% 85%, 100% 100%, 0 100%)
+}
+#submitButton{
+    display: flex;
+    align-items: center;
+    margin-top: 2%;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    width:40%;
+    margin-left: auto;
+    margin-right: auto;
+}
+#submitButton:disabled {
+    background-color: #ccc;
+    border-color: #999;     
+    color: #666;            
+    cursor: not-allowed;     
+}
+.btn:focus {
+    background-color:#000034 ;
+    transition: background-color 0.5s;
+    color:white;
+}
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 768px) {
+    .col-md-2, .col-md-4, .col-md-6, .col-md-12 {
+        width: 100%;
+    }
+    button {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .center, .center_ {
+        text-align: center;
+    }
+
+    .container {
+        padding: 10px;
+    }
+    h5 {
+        display: none;
+    }
+}
+
+</style>
+<body>
+   
+<h1 id="page_heading" class="text-center">CV Maker </h1>                     <!-- Main Heading -->                     
+<div id="main" class="container">                                            <!--   CV maker where all the inputs are held -->  
+    <form class="form-group" role="/submit"action="POST">
+        <h6 class="small-heading">Please write the corect details </h6>
+        <!-- ------------------------------------------------------------PERSIONAL INFORMATION----------------------------------------------------------->
+        <h2>Persional Information</h2>
+            <div class="row g-3 m-3">
+                <div class="col-md-2">
+                    <label>Name:</label>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" id="persion_name"class="form-control" name="persion_name" placeholder="Enter Name" required>
+                </div>
+                
+                <div class="col-md-2">
+                    <label>Contact:</label>
+                </div>
+                <div class="col-md-4">
+                    <input type="number" id="Contact"class="form-control" name="Contact" placeholder="030"required>
+                </div>
+                <div class="col-md-2">
+                    <label>Address:</label>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" id="Address"class="form-control" name="Address" placeholder="Enter Address"required>
+                </div>
+                <div class="col-md-2">
+                    <label>Expersience:</label>
+                </div>
+                <div class="col-md-4">
+                    <input type="number" id="Experience" class="form-control" name="Experience" placeholder="Experience in Years" min="0"  required>
+                </div>
+            </div>
+
+
+
+
+            <div class="row g-3 m-3">
+                <div class="col-md-2">
+                    <label>About:</label>
+                </div>
+                <div class="col-md-10">
+                    <textarea rows="5"  id="about"class="form-control" name="about" placeholder="your Summary"required></textarea>
+                </div>
+            </div>
+<!-- ------------------------------------------------------------EDUCATIONAL INFORMATION----------------------------------------------------------->
+        <h2>Educational Information</h2>
+            <div id="educationContainer">
+                <div class="row g-3 m-3 education-entry">
+                    <div class="col-md-2">
+                        <label>Institute:</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" name="Institute[]" placeholder="Enter Institute Name"required>
+                    </div>
+
+                    <div class="col-md-2">
+                        <label>CGPA:</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="number" step="0.01" class="form-control" name="cgpa[]" placeholder="Enter CGPA" min="0" max="4"required>
+                    </div>
+
+                    <div class="col-md-2">
+                        <label>Start Date:</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="date" class="form-control" name="Start_Date[]"required>
+                    </div>
+
+                    <div class="col-md-2">
+                        <label>End Date:</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="date" class="form-control" name="End_Date[]"required>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary mt-2" onclick="addEducation()">Add More</button>  <!-- bUTTON TO ADD MORE DIVES JUST LIKE THAT  -->
+
+
+
+        <h2>Skills Information</h2>
+            <div id="skillContainer">
+                <div class="row g-3 m-3 skill-entry">
+                    <div class="col-md-2">
+                        <label>Enter Skill:</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" placeholder="Enter skill" class="form-control" name="skills[]"required>
+                    </div>
+                </div>
+            </div>
+            
+            <button type="button" class="btn btn-primary mt-2" onclick="addskill()">Add More</button><!-- bUTTON TO ADD MORE DIVES JUST LIKE THAT  -->
+    </form>
+    <button type="button" id="submitButton" class="btn btn-primary">Submit</button>
+</div>
+
+
+<!-- ------------------------------------------------------------Ends MAin container--------------------------------------------------->
+
+<!-- ------------------------------------------------------------Replica container starts--------------------------------------------------->
+
+
+
+<div  id="main_CV" class="container center ">
+                                                <!-- Persional INFORMATION----------------------------------------------------------- -->
+        <div  class="row center_">
+            <div class="col-md-12  ">
+                <p id="persion_name_out">----</p>
+            </div>
+
+                <div class="col-md-12 ">
+                    <p id="address_out">----</p>
+                </div>
+                <div class="col-md-12 ">
+                    <p id="contact_out">----</p>
+                </div>
+        </div>
+
+
+                                                <!-- Summary/About-------------------------------------- -->
+        <div class="row">
+            <div class="col-md-12 summary">
+                <h2 id="h2_">Summary</h2>
+            </div>
+            <div class="col-md-12">
+                <br>
+                <p id="abut_out">----</p>
+            </div>
+            <br>
+        </div>
+                                                <!-- Persional Expersience------------------------ -->
+        <div class="row">
+            <div class="col-md-12 summary">
+                <h2 id="h2_">Expersience </h2>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-5">
+                <p>I have Work expersince in(years) of about</p>
+            </div>
+            <div class="col-md-1">
+                <p id="Experience_out">0</p>
+            </div>
+        </div>
+                                             <!-- Education INFORMATION----------------------------------------------------------- -->
+        <div class="row">
+            <div class="col-md-12 Educational">
+                <h2 id="h2_">Education</h2>
+            </div>
+            <div class="col-md-6 ">
+                <br>
+                <h5 id="h2_">Instutude </h5>
+            </div>
+            <div class="col-md-2 ">
+                <br>
+                <h5 id="h2_">CGPA</h5>
+            </div>
+            <div class="col-md-2 ">
+                <br>
+                <h5 id="h2_">Start Date</h5>
+            </div>
+            <div class="col-md-2 ">
+                <br>
+                <h5 id="h2_">End Date</h5>
+            </div>
+            </div>
+
+        <div id="educationDisplay"></div>
+        <div class="row">
+            <div class="col-md-12 Educational">
+                <h2 id="h2_">Skills</h2>
+            </div>
+        </div>
+        <!-- Skills INFORMATION----------------------------------------------------------- -->
+        <div id="skillDisplay"></div>
+</div>
+</body>
+
+
+<script>
+    // --------------------------------------------------Contact Check------------------------------------------------
+    document.getElementById("Contact").addEventListener("input", function () {
+    this.style.border = (/^\+92\d{10}$|^03\d{9}$/.test(this.value.trim())) ? "1px solid green" : "1px solid red";
+});
+
+document.getElementById("submitButton").addEventListener("click", function () {
+    const contactInput = document.getElementById("Contact");
+    if (!/^\+92\d{10}$|^03\d{9}$/.test(contactInput.value.trim())) {
+        contactInput.style.border = "1px solid red";
+        alert("Please enter a valid contact number starting with  03 only.");
+    }
+});
+
+
+// --------------------------------------------------Dates Check------------------------------------------------
+
+document.getElementById('submitButton').addEventListener('click', (e) => {
+    const startDates = document.querySelectorAll('input[name="Start_Date[]"]');
+    const endDates = document.querySelectorAll('input[name="End_Date[]"]');
+    let isValid = true;
+
+    startDates.forEach((start, index) => {
+        const startDate = new Date(start.value);
+        const endDate = new Date(endDates[index].value);
+
+        if (startDate >= endDate) {
+            start.value = '';
+            endDates[index].value = '';
+            start.style.borderColor = 'red';
+            endDates[index].style.borderColor = 'red';
+            isValid = false;
+            alert("Start Date cannot be same or greater than End Date.");
+        } else {
+            start.style.borderColor = '';
+            endDates[index].style.borderColor = '';
+        }
+    });
+
+    if (!isValid) {
+        e.preventDefault();
+    }
+});
+
+
+
+// --------------------------------------------------CGPA Check------------------------------------------------
+document.getElementById('submitButton').addEventListener('click', (e) => {
+    [...document.querySelectorAll('input[name="cgpa[]"]')].forEach(input => {
+        if (parseFloat(input.value) > 4) {
+            input.value = '';
+            input.style.borderColor = 'red';
+            alert("CGPA cannot be greater than 4");
+        }
+    });
+});
+
+
+
+// ----------------------------------------------------onclich show the proper CV
+document.getElementById('submitButton').addEventListener('click', function() {
+    window.scrollTo({
+        top: document.body.scrollHeight, 
+        behavior: 'smooth'              
+    });
+});
+// ----------------------------------------------------Mark red on all required fields 
+function checkRequiredFields() {
+    const fields = document.querySelectorAll('#main input, #main textarea');
+    let hasEmptyFields = false;
+
+    fields.forEach(field => {
+        field.style.borderColor = field.required && !field.value.trim() ? 'red' : '';
+        if (field.required && !field.value.trim()) hasEmptyFields = true;
+    });
+
+    document.getElementById('submitButton').disabled = hasEmptyFields;
+}
+
+document.querySelectorAll('#main input, #main textarea').forEach(field => field.addEventListener('input', checkRequiredFields));
+checkRequiredFields();
+
+
+
+//-------------------------------------------------------------------- dinamically change add the education values in CV
+
+function updateEducation() {
+    const displayContainer = document.getElementById("educationDisplay");
+    displayContainer.innerHTML = "";
+
+    document.querySelectorAll(".education-entry").forEach(entry => {
+        const [institute, startDate, endDate, cgpa] = [...entry.querySelectorAll('input')].map(input => input.value || "---");
+        displayContainer.innerHTML += `
+            <div class="row mb-2">
+                <div class="col-md-6"><h6># ${institute}</h6></div>
+                <div class="col-md-2"><p>${startDate}</p></div>
+                <div class="col-md-2"><p>${endDate}</p></div>
+                <div class="col-md-2"><p>${cgpa}</p></div>
+            </div>
+        `;
+    });
+}
+document.getElementById("submitButton").addEventListener("click", updateEducation);
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll('.education-entry input').forEach(input => {
+        input.addEventListener('input', updateEducation);
+    });
+});
+
+
+//-------------------------------------------------------------------- dinamically change add the skills values in CV
+
+function updateskill() {
+    const displayContainer = document.getElementById("skillDisplay");
+    displayContainer.innerHTML = "";
+
+    document.querySelectorAll(".skill-entry").forEach(entry => {
+        const [skills] = [...entry.querySelectorAll('input')].map(input => input.value || "---");
+        displayContainer.innerHTML += `
+            <div class="row mb-2">
+                <div class="col-md-6"><h6># ${skills}</h6></div>
+            </div>
+        `;
+    });
+}
+document.getElementById("submitButton").addEventListener("click", updateskill);
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll('.skill-entry input').forEach(input => {
+        input.addEventListener('input', updateskill);
+    });
+});
+
+
+//-------------------------------------------------------------------- on click the buttion the replica of educationsl and skills  dive 
+function addEducation() {
+    let container = document.getElementById("educationContainer");
+    let original = document.querySelector(".education-entry");
+    let clone = original.cloneNode(true);
+    clone.querySelectorAll("input").forEach(input => input.value = "");
+
+    container.appendChild(clone);
+}
+
+function addskill() {
+    let container = document.getElementById("skillContainer");
+    let original = document.querySelector(".skill-entry");
+    let clone = original.cloneNode(true);
+    clone.querySelectorAll("input").forEach(input => input.value = "");
+    container.appendChild(clone);
+}
+
+
+
+// -----------------------------------------------------------Simple codes to replicates the values dinamicaly
+
+   name_main=document.getElementById("persion_name")
+   name_out=document.getElementById("persion_name_out")
+   experience_main=document.getElementById("Experience")
+   Experience_out=document.getElementById("Experience_out")
+   contact_main=document.getElementById("Contact")
+   contact_out=document.getElementById("contact_out")
+   Address_main=document.getElementById("Address")
+   Address_out=document.getElementById("address_out")
+   about_main=document.getElementById("about")
+   abut_out=document.getElementById("abut_out")
+   const abb=()=>{
+    abut_out.textContent = about_main.value || '----';
+   }
+   const addd=()=>{
+    Address_out.textContent = Address_main.value || '----';
+   }
+   const Experience__=()=>{
+
+    Experience_out.textContent = experience_main.value || '----';
+   }
+   const main_function=()=>{
+    name_out.textContent = name_main.value || '----'; 
+   }
+   const contact_=()=>{
+    contact_out.textContent = contact_main.value || '----';
+   }
+   Address_main.addEventListener('input',addd);
+   name_main.addEventListener('input',main_function);
+   experience_main.addEventListener('input',Experience__);
+   about_main.addEventListener('input',abb);
+   contact_main.addEventListener('input',contact_);
+
+</script>
+</html>
