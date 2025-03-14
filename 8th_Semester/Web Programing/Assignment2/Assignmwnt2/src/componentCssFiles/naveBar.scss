@@ -1,0 +1,150 @@
+$backgroundColor: white;
+$TextColor: black;
+
+/* Light Mode */
+.brightness-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: $TextColor;
+  transition: color 0.3s;
+  margin-left: 20px;
+}
+.brightness-btn:hover {
+  background-color: transparent;
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background: black;
+  color: white;
+}
+body.dark-mode .brightness-btn {
+  color: white;
+}
+body.dark-mode a {
+  color: white;
+}
+
+/* Navbar */
+.navBArMain {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.logo img {
+  width: 100px;
+  display: block;
+}
+
+/* Hamburger */
+.hamburger {
+  font-size: 24px;
+  background: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: none;
+}
+.dark-mode .hamburger {
+  background: white;
+  color: black;
+}
+.hamburger:hover {
+  background-color: inherit;
+  color: inherit;
+}
+
+/* Navigation */
+.nav-links {
+  display: flex;
+  gap: 15px;
+  margin-left: 20px;
+}
+.nav-links a {
+  text-decoration: none;
+  font-size: 16px;
+  color: $TextColor;
+}
+.nav-links a:hover {
+  text-decoration: underline;
+  text-decoration-color: darkblue;
+  text-decoration-thickness: 2px;
+}
+
+/* Search */
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+.NaveSearch {
+  width: 400px;
+  padding: 10px 40px 10px 10px;
+  font-size: 16px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  border: none;
+  outline: none;
+}
+.search-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: gray;
+  font-size: 18px;
+  pointer-events: none;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+  .search-container {
+    display: none;
+  }
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: $backgroundColor;
+    flex-direction: column;
+    display: none;
+    text-align: center;
+    padding: 10px 0;
+  }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 40%;
+    background-color: $backgroundColor;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    z-index: 1000;
+
+    a {
+      padding: 10px 20px;
+      color: $TextColor;
+      text-decoration: none;
+      font-size: 18px;
+
+      &:hover {
+        text-decoration: underline;
+        text-decoration-color: darkblue;
+        text-decoration-thickness: 2px;
+      }
+    }
+  }
+}

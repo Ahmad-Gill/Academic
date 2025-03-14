@@ -1,0 +1,51 @@
+.aboutContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row-reverse; // Moves the image to the right
+    padding: 40px 20px;
+    max-width: 1200px;
+    gap: 40px;
+  
+    .textSection {
+      flex: 1.5;
+      text-align: left;
+    }
+  
+    .imageSection {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end; // Ensures image stays on the right
+    }
+  
+    .profileImage {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .aboutContainer {
+      flex-direction: column; // Stack text and image on small screens
+      text-align: center;
+      gap: 20px;
+    }
+  
+    .textSection {
+      width: 100%;
+    }
+  
+    .imageSection {
+      justify-content: center; // Centers image on mobile
+    }
+  
+    .profileImage {
+      width: 90%;
+      max-width: 350px;
+    }
+  }
+  
