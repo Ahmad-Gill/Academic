@@ -174,7 +174,7 @@ function DataEntry() {
         ))}
         <button type="button" onClick={addSocialMedia}>Add Social Media</button>
 
-        {/* Submit Button */}
+
         <br />
         <br />
         <button type="button" onClick={handleSubmit}>Submit</button>

@@ -34,7 +34,7 @@
           transition: 0.3s ease-in-out;
   
           .icon {
-            font-size: 18px; /* Adjust icon size */
+            font-size: 18px;
           }
           &:hover {
             text-decoration: underline;
@@ -46,7 +46,6 @@
     }
   }
   
-  /* Responsive Design */
   @media (max-width: 768px) {
     .footerContainer {
       flex-direction: column;

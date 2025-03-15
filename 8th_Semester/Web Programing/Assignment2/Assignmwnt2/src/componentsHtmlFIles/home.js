@@ -10,7 +10,7 @@ function Home(props) {
         <p className="mainPara">{props.bio}</p>
 
         <div className="homeLinks">
-          <Link to="/projects">MY Projects</Link>
+          <Link to="/project">MY Projects</Link>
           <Link to="/contact">Contact ME</Link>
         </div>
       </div>

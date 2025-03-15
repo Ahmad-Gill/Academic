@@ -1,7 +1,6 @@
 $backgroundColor: white;
 $TextColor: black;
 
-/* Light Mode */
 .brightness-btn {
   background: none;
   border: none;
@@ -15,11 +14,22 @@ $TextColor: black;
   background-color: transparent;
 }
 
-/* Dark Mode */
 body.dark-mode {
   background: black;
   color: white;
 }
+body.dark-mode .project-card {
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 5px 15px rgb(255, 250, 250);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+
+}
+body.dark-mode .project-title {
+  color: white;
+}
+
 body.dark-mode .brightness-btn {
   color: white;
 }
@@ -27,7 +37,6 @@ body.dark-mode a {
   color: white;
 }
 
-/* Navbar */
 .navBArMain {
   padding: 10px 20px;
   display: flex;
@@ -42,7 +51,6 @@ body.dark-mode a {
   display: block;
 }
 
-/* Hamburger */
 .hamburger {
   font-size: 24px;
   background: black;
@@ -60,7 +68,6 @@ body.dark-mode a {
   color: inherit;
 }
 
-/* Navigation */
 .nav-links {
   display: flex;
   gap: 15px;
@@ -77,7 +84,6 @@ body.dark-mode a {
   text-decoration-thickness: 2px;
 }
 
-/* Search */
 .search-container {
   position: relative;
   display: flex;
@@ -103,7 +109,6 @@ body.dark-mode a {
   pointer-events: none;
 }
 
-/* Mobile */
 @media (max-width: 768px) {
   .hamburger {
     display: block;

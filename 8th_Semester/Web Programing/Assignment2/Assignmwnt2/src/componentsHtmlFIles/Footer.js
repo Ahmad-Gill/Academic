@@ -1,12 +1,12 @@
 import React from "react";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa"; // Import icons
-import "../componentCssFiles/footer.scss"; // Import SCSS file
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa"; 
+import "../componentCssFiles/footer.scss"; 
 
 function Footer() {
   return (
     <footer className="footer">
       <div className="footerContainer">
-        <p>© {new Date().getFullYear()} Muhammad Ahmad Gill. All Rights Reserved.</p>
+        <p>© 2025 Muhammad Ahmad Gill. All Rights Reserved.</p>
         <div className="socialLinks">
           <a href="https://github.com/Ahmad-Gill/Ahmad-Gill" target="_blank" rel="noopener noreferrer">
             <FaGithub className="icon" /> GitHub

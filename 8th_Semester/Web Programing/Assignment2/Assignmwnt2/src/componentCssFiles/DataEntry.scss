@@ -1,21 +1,21 @@
 .DataEntryMain {
-  margin: 50px auto; /* Centers the container and adds a 50px margin on top and bottom */
-  width: 90%; /* Makes the container responsive */
-  max-width: 800px; /* Restricts the width of the form */
+  margin: 50px auto; 
+  width: 90%; 
+  max-width: 800px; 
 }
 
 /* .nameAge - Aligning labels and inputs in one line */
 .nameAge {
   display: flex;
-  gap: 12px; /* Space between label-input pairs */
+  gap: 12px; 
   align-items: center;
   flex-wrap: wrap;
-  margin: 15px 0; /* Adds margin on top and bottom */
-  justify-content: flex-start; /* Aligns content to the left */
+  margin: 15px 0;
+  justify-content: flex-start; 
 
   label {
     font-weight: bold;
-    width: 150px; /* Set fixed width for labels */
+    width: 150px; 
     margin-right: 5px;
   }
 
@@ -24,19 +24,17 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 14px;
-    width: 200px; /* Standard width for all inputs */
+    width: 200px; 
   }
 
   @media (max-width: 600px) {
     flex-direction: column;
-    align-items: center; /* Center-aligned on small screens */
+    align-items: center; 
     input {
       width: 100%;
     }
   }
 }
-
-/* .Image - Profile Picture Upload */
 .Image {
   display: flex;
   align-items: center;
@@ -55,7 +53,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 14px;
-    width: 200px; /* Standard width for file input */
+    width: 200px; 
   }
 
   @media (max-width: 600px) {
@@ -75,7 +73,7 @@
   margin-bottom: 15px;
 
   label {
-    width: 150px; /* Set fixed width for labels */
+    width: 150px;
     margin-right: 10px;
   }
 
@@ -85,7 +83,7 @@
     border-radius: 5px;
     font-size: 14px;
     border: 1px solid #ccc;
-    width: 200px; /* Standard width for input fields */
+    width: 200px; 
   }
 
   @media (max-width: 600px) {
@@ -101,12 +99,10 @@
       border-radius: 5px;
       font-size: 14px;
       border: 1px solid #ccc;
-      width: 100%; /* Standard width for input fields */
+      width: 100%;
     }
   }
 }
-
-/* .link - Aligning social media links */
 .link {
   display: flex;
   flex-wrap: wrap;
@@ -121,7 +117,7 @@
     margin-bottom: 15px;
 
     label {
-      width: 150px; /* Set fixed width for labels */
+      width: 150px;
       margin-right: 10px;
       font-weight: bold;
     }
@@ -132,7 +128,7 @@
       border-radius: 5px;
       font-size: 14px;
       border: 1px solid #ccc;
-      width: 200px; /* Standard width for input fields */
+      width: 200px; 
     }
   }
 
@@ -161,7 +157,6 @@
   }
 }
 
-/* Button Styling */
 button {
   padding: 10px 20px;
   background-color: #007bff;

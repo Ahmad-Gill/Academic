@@ -10,7 +10,7 @@ function NveBar() {
 
   const toggleBrightness = () => {
     setDarkMode(!darkMode);
-    document.body.classList.toggle("dark-mode"); 
+    document.body.classList.toggle("dark-mode");  //   If <body> does not have the "dark-mode" class → adds it.   adn vice verssa
   };
 
   const handleType = (event) => {
@@ -31,18 +31,13 @@ function NveBar() {
         <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
         <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
         <Link to="/DataEntry" onClick={() => setMenuOpen(false)}>DataEntry</Link>
-        <Link to="/projects" onClick={() => setMenuOpen(false)}>Projects</Link>
+        <Link to="/project" onClick={() => setMenuOpen(false)}>Projects</Link>
         <Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
       </div>
 
       {/* Search Bar */}
       <div className="search-container">
-        <input
-          className="NaveSearch"
-          placeholder="Search"
-          value={search}
-          onChange={handleType}
-        />
+        <input className="NaveSearch" placeholder="Search" value={search} onChange={handleType}/>
         <FaSearch className="search-icon" />
       </div>
       <button className="brightness-btn" onClick={toggleBrightness}>

@@ -27,10 +27,10 @@
     }
   }
   
-  /* Responsive Design */
+
   @media (max-width: 768px) {
     .aboutContainer {
-      flex-direction: column; // Stack text and image on small screens
+      flex-direction: column;
       text-align: center;
       gap: 20px;
     }
@@ -40,7 +40,7 @@
     }
   
     .imageSection {
-      justify-content: center; // Centers image on mobile
+      justify-content: center;
     }
   
     .profileImage {
