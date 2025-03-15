@@ -65,10 +65,10 @@ function DataEntry() {
 
   {/* --------------------------------Main Submission  */}
   const handleSubmit = () => {
-    // if (!name || !age || !bio || !interests || !skills || !description) {      {/* --------------------------------ALL required Checks  */}
-    //   alert("Please fill in all required fields.");
-    //   return;
-    // }
+    if (!name || !age || !bio || !interests || !skills || !description) {      {/* --------------------------------ALL required Checks  */}
+      alert("Please fill in all required fields.");
+      return;
+    }
     
     const formData = {
       profileImage,
