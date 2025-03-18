@@ -1,0 +1,23 @@
+
+[org 0x0100]
+jmp start
+array: dw 1, 9, 9,9, 8, 8,8, 8, 8,8, 1, 1, 9, 9, 8, 8, 8, 8, 1, 9, 8, 8
+	find : dw 9
+start:
+	 mov si, -2
+	mov bp,0
+	mov bx,array
+	mov dx,[find]
+repeat:
+	cmp bp,44
+	jz end
+	add bp,2
+	add si,2
+	mov cx,[bx+si]
+	cmp cx,dx
+	jnz repeat
+	add ax,1
+	jmp repeat
+end:
+	mov ax, 0x4c00 
+	int 0x21

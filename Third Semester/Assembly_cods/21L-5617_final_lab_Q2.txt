@@ -1,0 +1,46 @@
+[org 0x100]
+
+jmp start
+
+swaping:
+push bp
+mov bp,sp
+push ax
+push di
+push si
+push bx
+
+mov ax,[bp+4]
+ mov di, 1111000011110000b
+  and di, ax
+  shr di,4
+  mov si, 0000111100001111b
+  and si, ax
+  shl si,4
+  or di,si
+  mov ax,di
+
+  mov bl,ah
+  mov bh ,al
+mov [bp+6],bx
+pop bx
+pop si
+pop di
+pop ax
+pop bp
+
+ret 2
+
+start:
+
+
+sub sp,2
+
+  mov ax,0x5617
+push ax
+call swaping
+ 
+pop bx
+end:
+mov ax, 0x4c00
+int 0x21

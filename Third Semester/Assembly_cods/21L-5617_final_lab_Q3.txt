@@ -1,0 +1,97 @@
+[org 0x100]
+
+jmp start
+
+PF_Array: dw 566, 189, 243, 60, 131, 403, 238, 612, 32, 26, 285, 501, 503, 241, 758, 98, 380,545, 99, 659, 652, 580, 232, 530, 956, 701, 790, 967, 958, 745, 341, 400, 988, 20, 384, 571,126, 886, 549, 983, 619, 876, 369, 221, 474, 818, 900, 983, 178, 176, 824, 188, 141, 467, 128,705, 200, 885, 647, 841, 571, 551, 909, 499, 456, 796, 766, 530, 68, 51, 559, 927, 444, 188,452, 688, 526, 307, 267, 572, 315, 512, 481, 824, 72, 905, 581, 937, 300, 42, 31, 914, 971, 872,633, 632, 794, 666, 406, 133
+first: dw 0
+second: dw 0
+third:dw 0
+third_largest:
+
+
+
+
+mov cx,100
+mov bx,-2
+
+nexttt:
+add bx,2
+mov ax,[PF_Array+bx]
+mov dx ,[third]
+cmp ax,[third]
+jb helooo 
+
+
+
+replaceee:
+cmp ax,[first]
+jae helooo
+cmp ax,[second]
+jae helooo
+mov [third],ax
+helooo:
+loop nexttt
+ret 
+
+
+
+
+
+second_largest:
+
+
+mov cx,100
+mov bx,-2
+
+nextt:
+add bx,2
+mov ax,[PF_Array+bx]
+cmp ax,[second]
+ja replacee 
+jmp heloo
+
+
+replacee:
+cmp ax,[first]
+je heloo
+mov [second],ax
+heloo:
+loop nextt
+ret 
+
+
+
+
+first_largest:
+
+mov cx,100
+mov bx,-2
+
+next:
+add bx,2
+mov ax,[PF_Array+bx]
+cmp ax,[first]
+ja replace 
+jmp helo
+
+
+replace:
+
+mov [first],ax
+helo:
+loop next
+ret 
+
+start:
+
+call first_largest
+ 
+
+call second_largest
+call third_largest
+mov bx,[first]
+mov cx,[second]
+mov dx,[third]
+end:
+mov ax, 0x4c00
+int 0x21

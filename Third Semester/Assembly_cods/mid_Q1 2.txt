@@ -1,0 +1,78 @@
+[org 0x0100]
+
+jmp start
+arr :dw 3,5,9
+arr2:dw 0,0,0,0,0,0,0,0,0,0,0,0
+l:dw 0
+r:dw 2
+number:dw 4
+max:dw 0
+XOR_operation:
+	push bp
+	mov bp,sp
+	push ax
+	push bx
+	push cx
+	push si
+	push di
+	
+	
+	mov bx,[bp+8]
+	mov si,[bp+6]
+	sub si,2
+	mov di,[bp+4]
+	mov ax,2
+	mul di
+	mov di,ax
+l2:
+	mov cx,0000
+	add si,2
+	mov ax,[bp+10]
+	mov cx,[bx+si]
+	xor ax,cx
+	mov [arr2+si],ax
+	cmp si,di
+	jnz l2
+	mov si,[bp+6]
+	sub si,2
+	mov cx,arr2
+l3:
+	add si,2
+	
+	mov ax,[arr2+si]
+	mov dx,[max]
+	cmp dx,ax
+	ja l4
+	mov [max],ax
+	cmp si,di
+	jne l3
+	je end
+
+l4:
+	mov [max],dx
+	cmp si,di
+	jne l3
+end:
+	pop di
+	pop si
+	pop cx
+	pop bx
+	pop ax
+	pop bp
+	ret 4
+	
+
+start:
+	mov ax,[number]
+	push ax
+	mov ax,arr
+	push ax
+	mov ax,[l]
+	push ax
+	mov ax,[r]
+	push ax
+	call XOR_operation
+	mov bx,[max]
+
+mov ax,0x4c00
+int 21h

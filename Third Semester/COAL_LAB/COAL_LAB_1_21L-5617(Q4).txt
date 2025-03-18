@@ -1,0 +1,18 @@
+[org 0x0100]
+	mov bp,0
+	mov ax,10
+	mov bx,20
+	mov cx,30
+l1:
+	 mov dx,0
+	mov dx,ax
+	mov ax,cx
+	mov cx,bx
+	mov bx,dx
+	add bp,1
+	cmp bp,2
+	jnz l1
+
+
+	mov ax,0x4c00
+	int 0x21

@@ -1,0 +1,25 @@
+[org 0x0100]
+	jmp start
+n:
+
+	mov word [es:di], 0x072e 
+	add di, 2 
+	cmp di, 4000 
+	jnz n
+	jmp endl
+start:
+
+	mov ax, 0xb800 
+	mov es, ax 
+	mov di, 0 
+
+
+nextchar:
+	mov word [es:di], 0x075f 
+	add di, 2 
+	cmp di, 2080 
+	jne nextchar 
+	jmp n
+endl:
+	mov ax, 0x4c00 
+	int 0x21

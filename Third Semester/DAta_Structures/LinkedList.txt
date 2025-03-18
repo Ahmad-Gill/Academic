@@ -1,0 +1,119 @@
+#include <iostream>
+using namespace std;
+class LinkedList;
+
+class Node {
+	friend class LinkedList;
+	int data;
+	Node* next;//end of class
+};
+
+class LinkedList{
+private:
+	Node* head;
+public:
+	LinkedList() {
+		head = nullptr;
+	}
+
+	bool insertAtStart(int val) {
+		Node* temp = new Node;
+		temp->data = val;
+		temp->next = head;
+		head = temp;
+		return 1;
+	}//end of insertAtStart
+
+	bool deleteFromStart() {
+		if (head == nullptr) {
+			return 0;
+		}
+		else {
+			Node* curr = head;
+			head = curr->next;
+			//head=head->next;
+			delete curr;
+			return 1;
+		}
+	}//end of deleteFromStart
+
+	void Display() {
+		Node* curr = head;
+		while (curr != nullptr) {
+			cout << curr->data << " ";
+			curr = curr->next;
+		}
+	}//end of Display
+
+	bool insertAtEnd(int val) {
+		Node* temp = new Node;
+		temp->data = val;
+		temp->next = nullptr;
+		Node* prev = 0, *curr = head;
+		while (curr != nullptr) {
+			prev = curr;
+			curr = curr->next;
+		}
+		//if element is first in list
+		if (prev == 0) {
+			head = temp;
+			return 1;
+		}
+		else {
+			prev->next = temp;
+			return 1;
+		}
+
+	}//end of insertAtEnd
+	
+	bool deleteFromEnd()
+	{
+		if (head == 0) {
+			cout << "List is empty \n ";
+			return 0;
+		}
+		else
+		{
+			Node* curr = head, * last = 0, * secondLast = 0;
+			while (curr != NULL) {
+				secondLast = last;
+				last = curr->next;
+			}
+			if (secondLast == 0) {
+				head = NULL;
+				delete last;
+				last = 0;
+				cout << "Last Block deleted \n";
+				return 1;
+			}
+			else
+			{
+				secondLast->next = NULL;
+				delete last;
+				last = 0;
+				cout << "Last Block deleted \n";
+				return 1;
+			}
+		}
+	}
+	~LinkedList() {
+		while (head != NULL) {
+			Node* curr = head;
+			head = curr->next;
+			delete curr;
+			curr = head;
+		}
+	}
+
+};
+int main() {
+	LinkedList l1;
+	l1.insertAtStart(6);
+	l1.insertAtEnd(7);
+	l1.deleteFromStart();
+	l1.deleteFromEnd();
+	l1.Display();
+
+	system("pause");
+	return 0;
+}

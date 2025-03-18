@@ -1,0 +1,25 @@
+[org 0x0100]
+
+jmp start
+
+num1: dw 5
+factorial:
+mov cx ,[num1]
+mov bx,cx
+dec cx
+mov ax,0
+l1:
+mov dx,cx
+l2 :
+add ax,bx
+dec dx
+jnz l2
+mov bx,ax
+dec cx
+cmp cx,2
+jne l1
+ret
+start:
+call factorial
+mov ax,0x4c00
+int 0x21

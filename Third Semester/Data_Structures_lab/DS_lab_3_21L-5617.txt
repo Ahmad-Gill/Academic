@@ -1,0 +1,199 @@
+#include<iostream>
+using namespace std;
+
+class Node
+{
+	friend class List;
+	int  data;
+	Node *next;
+};
+
+class List
+{
+private:
+	Node *head;
+public:
+	List()
+	{
+		head = nullptr;
+	}
+
+	void insertAtStart(int element)
+	{
+		Node *temp = new Node;
+		temp->data = element;
+		temp->next = head;
+		head = temp;
+	}
+
+	bool deleteFromStart()
+	{
+		if (head == nullptr)
+		{
+			return 0;
+		}
+		else
+		{
+			Node *curr = head;
+			head = curr->next;
+			delete curr;
+			curr = 0;
+			return 1;
+		}
+	}
+
+	void Print()
+	{
+		Node * curr = head;
+		while (curr != nullptr)
+		{
+			cout << curr->data << " ";
+			curr = curr->next;
+		}
+	}
+
+	bool insertAtEnd(int element)
+	{
+		Node *temp = new Node;
+		temp->data = element;
+		temp->next = nullptr;
+		Node *prev = 0, *curr = head;
+		while (curr != nullptr)
+		{
+			prev = curr;
+			curr = curr->next;
+		}
+		if (prev == 0)
+		{
+			head = temp;
+			return 1;
+		}
+		else
+		{
+			prev->next = temp;
+			return 1;
+		}
+	}
+
+	bool deleteFromEnd()
+	{
+		if (head == 0)
+		{
+			cout << "List is Empty" << endl;
+			return 0;
+		}
+		else
+		{
+			Node *curr = head, *last = 0, *secondlast = 0;
+			while (curr != nullptr)
+			{
+				secondlast = last;
+				last = curr;
+				curr = curr->next;
+			}
+			if (secondlast == 0)
+			{
+				head = nullptr;
+				delete last;
+				last = 0;
+				cout << "Last Block Deleted" << endl;
+				return 1;
+			}
+			else
+			{
+				secondlast->next = nullptr;
+				delete last;
+				last = 0;
+				cout << "Last Block Deletd" << endl;
+				return 1;
+			}
+		}
+	}
+
+	~List()
+	{
+		while (head != nullptr)
+		{
+			Node *curr = head;
+			head = curr->next;
+			delete curr;
+			curr = head;
+		}
+	}
+	void Search(int value)
+	{
+		int i = 0;
+		if (head == 0)
+		{
+			cout << "list is empty ";
+		}
+		Node*curr = head;
+		while (curr != NULL)
+		{
+			if (curr->data == value)
+			{
+				i++;
+
+			}
+			curr = curr->next;
+		}
+
+		if (i != 0)
+			cout << "yes exists in this linklist array " << endl;
+		//return 1;
+		else
+			cout << "the given value does not esist in given array" << endl;
+		//return 0;
+	}
+	/*
+	List Union(List &a, List&b)
+	{
+	List c = a;
+	Node* temp = b.head;
+	while (temp != NULL){
+	if (c.Search(temp->data) == 0){
+	c.insertAtEnd(temp->data);
+	}
+	temp = temp->next;
+	}
+	return c;
+	}
+	*/
+
+};
+
+void main()
+{
+	List L;
+	List L1;
+	//	List L2;
+	L.insertAtStart(6);
+	L.insertAtStart(5);
+	L.insertAtStart(4);
+	//L.insertAtEnd(2);
+	L.insertAtStart(3);
+	L.insertAtStart(2);
+	L.insertAtStart(1);
+	L.Print();
+	cout << endl;
+	L1.insertAtStart(12);
+	L1.insertAtStart(11);
+	L1.insertAtStart(4);
+	//L1.insertAtEnd(2);
+	L1.insertAtStart(3);
+	L1.insertAtStart(2);
+	L1.insertAtStart(1);
+	L1.Print();
+	cout << endl;
+	//L.deleteFromStart();
+	//L.deleteFromEnd();
+	L.Search(2);
+	L.Search(4);
+	//L.Search(7);
+	cout << endl;
+	//L2.Union(L,L1);
+	//L2.Print();
+
+	system("pause");
+
+}

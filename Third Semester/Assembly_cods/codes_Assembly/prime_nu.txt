@@ -1,0 +1,31 @@
+[org 0x0100]
+	mov cx,7
+	mov si,0
+	mov di,0
+	mov bx,1
+repeat:
+	mov dx,0000
+	cmp bx,6
+	jz end
+	add bx,1
+	mov ax,cx
+	div bx
+	cmp dx,0
+	jz count
+	jnz repeat
+count:
+	add di,1
+	jmp repeat
+	
+end:
+	cmp di,0
+	jz l2
+	jnz l3
+l3:
+	mov bx,-1
+l2:
+	mov bx,1
+
+		
+	mov ax, 0x4c00 ; terminate program
+	int 0x21

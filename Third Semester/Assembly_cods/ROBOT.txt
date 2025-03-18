@@ -1,0 +1,352 @@
+[org 0x0100]
+jmp start
+ message: db 'Single_robot_on_multiple_path' ; string to be printed
+
+message4:db 'PRESS ANY KEY TO CONTINUE'
+message5:db 'ROBOT reach the destination'
+message6:db 'ROBOT HIT THE BORDER'
+
+
+robot_x : dw 36 ;greater that 30 and less than 48
+robot_y : dw 15 ;greater the 10 and less than 18
+
+source_x:dw 46;greater that 30 and less than 48
+
+source_y:dw 16 ;greater the 10 and less than 18
+location:dw 0
+
+up:dw 0
+down:dw 1
+left:dw 2
+right:dw 3
+
+direction:dw 5
+
+game_loss:
+
+
+
+
+mov ax, 0xb800
+	mov es, ax ; point es to video base
+	mov di, 1344 ; point di to top left column
+	mov si, message6 ; point si to string
+	mov cx, 20 ; load length of string in cx
+	mov ah, 74 ; normal attribute fixed in al
+	z: 
+	mov al, [si] ; load next char of string
+	mov [es:di], ax ; show this char on screen
+	add di, 2 ; move to next screen location
+	add si, 1 ; move to next char in string
+	loop z; repeat the operation cx times
+	call delay
+
+	ret
+
+
+game_win:
+
+
+
+
+mov ax, 0xb800
+	mov es, ax ; point es to video base
+	mov di, 1344 ; point di to top left column
+	mov si, message5 ; point si to string
+	mov cx, 27 ; load length of string in cx
+	mov ah, 74 ; normal attribute fixed in al
+	w: 
+	mov al, [si] ; load next char of string
+	mov [es:di], ax ; show this char on screen
+	add di, 2 ; move to next screen location
+	add si, 1 ; move to next char in string
+	loop w; repeat the operation cx times
+	call delay
+
+	ret
+
+starting_window:
+
+
+mov ax, 0xb800
+	mov es, ax ; point es to video base
+	mov di, 1344 ; point di to top left column
+	mov si, message ; point si to string
+	mov cx, 29 ; load length of string in cx
+	mov ah, 0x64 ; normal attribute fixed in al
+	e: 
+	mov al, [si] ; load next char of string
+	mov [es:di], ax ; show this char on screen
+	add di, 2 ; move to next screen location
+	add si, 1 ; move to next char in string
+	loop e; repeat the operation cx times
+	call delay
+
+
+
+mov ax, 0xb800
+	mov es, ax ; point es to video base
+	mov di, 3250 ;point di to top left column
+	mov si, message4 ; point si to string
+	mov cx, 25 ; load length of string in cx
+	mov ah, 0x76 ; normal attribute fixed in al
+	b: 
+	mov al, [si] ; load next char of string
+	mov [es:di], ax ; show this char on screen
+	add di, 2 ; move to next screen location
+	add si, 1 ; move to next char in string
+	loop b ; repeat the operation cx times
+	call delay
+
+	ret
+
+
+
+;delay function
+delay:
+	mov ax,7
+oloop:
+	
+	mov cx, 0xFFFF
+	sub ax,1
+	cmp ax,0
+	
+	je return
+iloop:
+
+	sub cx,1
+	cmp cx,1
+	jne iloop
+	jmp oloop
+
+	
+return:
+	ret
+
+
+make_bord:
+mov ax, 0xb800 		; load video base in ax
+	mov es, ax 			; point es to video base
+	mov di, 1500			; point di to top left column
+next: 
+	mov word [es:di], 0x1012 ; clear next char on screen
+	add di, 2 			; move to next screen location
+	cmp di, 1538	; has the whole screen cleared
+	jne next
+	mov di, 2940			; point di to top left column
+n: 
+	mov word [es:di], 0x1012 ; clear next char on screen
+	add di, 2 			; move to next screen location
+	cmp di, 2978	; has the whole screen cleared
+	jne n
+	
+
+	
+	mov di,1500
+	mov cx, 10
+
+l:
+
+	mov word [es:di], 0x1012
+	add di,160
+	loop l
+	
+
+
+	mov di,1538
+	mov cx, 10
+	
+l0:
+
+	mov word [es:di], 0x1012
+	add di,160
+	loop l0
+	
+
+	
+
+	ret
+
+clearSecreen:
+	mov ax, 0xb800 		; load video base in ax
+	mov es, ax 			; point es to video base
+	mov di, 0 			; point di to top left column
+nextcha: 
+	mov word [es:di], 0x0620 ; clear next char on screen
+	add di, 2 			; move to next screen location
+	cmp di, 4000 		; has the whole screen cleared
+	jne nextcha
+
+
+	ret
+
+start:
+call clearSecreen
+
+
+call starting_window
+;call make_bord
+mov ah,0
+int 16h
+call clearSecreen
+call make_bord
+
+setup_game:
+;Clear the secreen all the time
+
+game_loop:
+	mov ax,0x6020
+	xor di,di
+	mov cx,4000
+	rep stosw
+call make_bord
+;Draw snake 
+
+snake_loop:	
+		mov ax,80
+	mul byte [robot_y] 
+	add ax,[robot_x]
+	shl ax,1
+	mov di,ax
+	mov ax,0x602a
+	mov [es:di],ax
+
+helo:	
+;draw apple
+
+	mov ax,80
+	mul byte [source_y]
+	add ax,[source_x]
+	shl ax,1
+	mov di,ax
+	mov ah,0x00
+	mov al,0x7f
+	 stosb
+;call make_bord
+;Move snake in current  direction 
+	mov al,[direction]
+	cmp al,[up]
+	je move_up
+   
+	cmp al,[down]
+	je move_down
+	
+	cmp al,[left]
+	je move_left
+	
+	cmp al,[right]
+	je move_right
+	
+	jmp get_player_input
+   
+move_up:
+	sub word [robot_y],1
+	jmp get_player_input
+
+move_down: ;
+		add word [robot_y],1
+	jmp get_player_input
+move_left: 
+		sub word [robot_x],1
+	jmp get_player_input
+	
+
+move_right: 
+		add word [robot_x],1
+	jmp get_player_input
+
+;Update snake position
+update_snake:
+
+
+; LOSS condition
+
+;;Hit border of secreen
+;
+get_player_input:
+ mov bl,[direction] ;save current direction
+
+	mov ah,0x1
+	int 0x16  ;chek the keyboard status
+
+	jz check_apple  ;if no key were pressed
+	
+	xor ah,ah
+	int 0x16    		;GET KEY STROKE ah = SCANE CODE AL=asci code
+
+	cmp ah,0x48
+	je press_up
+
+	cmp ah,0x50
+	je press_down
+
+	cmp ah,0x4b
+	je press_left
+	
+	cmp ah,0x4d
+	je press_right
+
+	jmp check_apple
+
+press_up:
+
+	mov bl ,[up]
+	jmp check_apple
+press_down:
+
+
+	mov bl,[down]
+	jmp check_apple
+press_left:
+
+	mov bl,[left]
+	jmp check_apple
+
+press_right:
+
+
+	mov bl,[right]
+	jmp check_apple
+
+
+;check_player hit Apple
+check_apple:
+	mov byte [direction],bl
+	mov ax,[source_x]
+	cmp ax,[robot_x]
+	jne l9
+	mov ax,[robot_y]
+	cmp ax,[source_y]
+	jne l9
+	jmp game_winn
+
+
+
+l9:
+;hit border
+cmp word[robot_x],30  ;Upper border
+je game_lost
+cmp word[robot_y],10	;lower border
+je game_lost
+
+cmp word[robot_x],50 ;left secreen
+je game_lost
+cmp word[robot_y],19
+je game_lost
+
+
+lx:
+call delay
+jmp setup_game
+game_lost:
+call clearSecreen
+call game_loss
+
+ mov ax, 0x4c00
+int 21h
+game_winn:
+
+call clearSecreen
+call game_win
+end: mov ax, 0x4c00
+int 21h

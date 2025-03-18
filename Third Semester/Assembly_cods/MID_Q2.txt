@@ -1,0 +1,46 @@
+[org 0x0100]
+
+jmp start
+diff : dw 0
+mul_: dw 0
+return:dw 0
+myFuction:
+	push bp
+	mov bp,sp
+	push ax
+	push bx
+	push cx
+	mov bx,[bp+6]
+	mov ax,bx
+	
+	mov cx,[bp+4]
+	sub bx,cx
+	mov [diff], bx
+	mul cx
+	mov [mul_],ax
+	mov ax, [mul_]
+	mov bx,[diff]
+	cmp ax,bx
+	jae l2
+	mov [return],bx
+
+l2:
+	mov [return],ax
+	
+	pop cx
+	pop bx
+	pop ax
+	pop bp
+	ret 4
+	
+
+start:
+	mov ax,5
+	push ax
+	mov ax,4
+	push ax
+	call myFuction
+	mov bx,[return] 
+
+mov ax,0x4c00
+int 21h

@@ -1,0 +1,219 @@
+[org 0x0100]
+
+;---------------------------
+
+
+jmp start
+
+
+message: db '+'
+tr: dw 1
+message2: db '/'
+tl:dw 10
+br:dw 11
+var:dw 1
+var2:dw 2
+var3:dw 1
+var4:dw 2
+y: dw 12 			 ; for ri8 vertex
+x: dw 12                          ; for left vertex
+message3: db '\'
+message4:db ' '		;for top
+message5:db '-'		;for top
+
+clrscr:
+push es
+push ax
+push di
+
+mov ax,0xb800
+mov es,ax
+mov di,0
+
+nextchar:
+mov word[es:di],0x0720
+add di,2
+cmp di,4000
+jne nextchar
+pop es
+pop ax
+pop di
+
+ret
+
+
+printstr:
+
+push bp
+mov bp,sp
+push es
+push ax
+push cx
+push si
+push di
+
+mov ax,0xb800
+mov es,ax
+mov al,80
+
+mul byte[bp+10]
+
+add ax,[bp+12]
+
+shl ax,1
+
+mov di,ax
+mov si,[bp+6]
+mov cx,[bp+4]
+mov ah,[bp+8]
+
+nextchar1:
+mov al,[si]
+mov [es:di],ax
+add di,2
+add si,1
+loop nextchar1
+
+pop di
+pop si
+pop cx
+pop ax
+pop es
+pop bp
+
+ret 10
+
+start:
+call clrscr
+
+;-----------------------------------------------------------------------top----------------------------------------------
+mov cx,word[tl]   ;tl = z
+l1:
+mov ax,word[var]
+push ax
+mov ax,1
+push ax
+mov ax,3
+push ax
+
+mov ax,message4
+
+push ax
+push word[tr]
+call printstr
+
+add word[var],1
+dec cx
+cmp cx,0
+jne l1
+;-----------------------------------------------------------------+++++++----------------------------------------------------
+mov ax,11
+push ax
+mov ax,1
+push ax
+
+mov ax,3
+push ax
+
+mov ax,message
+push ax
+push word[tr]
+call printstr
+
+;----------------------------------------------------------------------ri8-----------------------------------------------
+
+mov cx,word[tl]
+l2:
+mov ax,[y]		            ;col
+push ax
+mov ax,word[var2]		;row
+push ax
+mov ax,3
+push ax
+
+mov ax,message3
+
+push ax
+push word[tr]
+call printstr
+
+add word[var2],1
+add word[y],1
+
+dec cx
+cmp cx,0
+jne l2
+;-----------------------------------------------------------------+++++++----------------------------------------------------
+mov ax,word[var]
+push ax
+mov ax,word[var2]
+push ax
+
+mov ax,3
+push ax
+
+mov ax,message
+push ax
+push word[tr]
+call printstr
+;--------------------------------------------------------------------- Bottom-----------------------------------------------
+mov cx,word[br]
+
+l3:
+sub word[var],1
+mov ax,word[var]              ;col
+push ax
+mov ax,word[var2]             ;row
+push ax
+mov ax,3
+push ax
+
+mov ax,message5
+
+push ax
+push word[tr]
+call printstr
+
+dec cx
+cmp cx,0
+jne l3
+;-----------------------------------------------------------------+++++++----------------------------------------------------
+mov ax,word[y]
+push ax
+mov ax,word[var2]
+push ax
+
+mov ax,3
+push ax
+
+mov ax,message
+push ax
+push word[tr]
+call printstr
+
+;----------------------------------------------------------------------Left-----------------------------------------------
+
+mov cx,word[tl]
+
+l4:
+sub word[var2],1
+mov ax,word[var]             ;col
+push ax
+mov ax,word[var2]		;row
+push ax
+mov ax,3
+push ax
+
+mov ax,message2
+
+push ax
+push word[tr]
+call printstr
+add word[var],1
+
+dec cx
+cmp cx,0
+jne l4
+
+mov ax,0x4c00
+int 21h

@@ -1,0 +1,54 @@
+
+[org 0x0100]
+jmp start
+array: dw 111, 999, 888, 888, 11, 99, 88, 88, 1, 9, 8, 8
+	max : dw 0
+	max1:dw 0
+start:
+	 mov si, -2
+	mov bp,-2
+	mov bx,array
+	mov dx,[max]
+repeat:
+	cmp bp,24
+	jz S_start
+	add bp,2
+	add si,2
+	mov cx,[bx+si]
+	cmp cx,dx
+	ja l1
+	jmp repeat
+l1:
+	mov dx,cx
+	cmp bp,24
+	jz S_start
+	jmp repeat
+S_start: 
+	 mov si, -2
+	mov bp,0
+	mov bx,array
+	mov di,[max1]
+repeatt:
+	cmp bp,24
+	jz end
+	add bp,2
+	add si,2
+	mov cx,[bx+si]
+	cmp cx,di
+	ja l2
+	jmp repeatt
+
+l3:
+	mov dx,cx
+	cmp bp,24
+	jz end
+	jmp repeat
+l2:
+ 	cmp cx,dx
+	jz repeatt
+
+	mov di,cx
+	jmp repeatt
+end:
+	mov ax, 0x4c00 
+	int 0x21

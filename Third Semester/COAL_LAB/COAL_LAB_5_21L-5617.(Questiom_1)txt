@@ -1,0 +1,46 @@
+[org 0x0100]
+jmp start
+s1:dw -3, -1, 2, 5, 6, 8, 9
+s2:dw -2, 2, 6, 7, 9
+n:dw 0,0,0,0,0,0,0
+
+helo:
+	jmp l1
+l2:
+	add di,2
+	mov si,-2
+	cmp di,14
+	jz end
+
+l1:	
+	cmp si,10
+	jz l2
+	add si,2
+	mov ax,[s2+si]
+	mov dx,[s1+di]
+
+	cmp ax,dx
+	jnz l1
+	mov [n+bx],ax
+	add bx,2
+	jmp l1
+end:
+	ret
+	
+
+start:
+	mov bx,0
+	mov si,-2
+	mov di,0
+	mov cx,0
+	call helo
+	mov si,-2
+l3:
+	add si,2
+	mov ax,[n+si]
+	cmp si,bx
+	jnz l3
+
+	mov ax,0x4c00
+	int 21
+
